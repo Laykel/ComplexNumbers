@@ -8,13 +8,13 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "ComplexNumbers.hpp"
+#include "ComplexNumber.hpp"
 
 using namespace std;
 
 int main() {
-   ComplexNumber cn(1, 2);
-   ComplexNumber im(0, 4.3);
+   ComplexNumber<int> cn(1, 2);
+   ComplexNumber<> im(0, 4.3);
    double mul = 2;
 
    cout << cn << " + 4 = " << cn + 4 << endl;
@@ -43,11 +43,12 @@ int main() {
    cout << im << " is equal to " << cn << " ?  - " << (cn == im) << endl;
    cout << endl;
 
-   ComplexNumber ce;
+   ComplexNumber<> ce;
 
    cout << ce << " is default constructed" << endl;
 
-   ComplexNumber c2(cn);
+   // Test conversion constructor
+   ComplexNumber<> c2(cn);
 
    c2 += 19.5;
    c2.setImaginaryPart(67.2);
