@@ -48,12 +48,12 @@ int main() {
    cout << ce << " is default constructed" << endl;
 
    // Test conversion constructor
-   ComplexNumber<> c2(cn);
+   ComplexNumber<float> c2(cn);
 
    c2 += 19.5;
-   c2.setImaginaryPart(67.2);
+   c2.setImaginaryPart(67.2f);
 
-   cout << c2 << " is made from " << cn << endl;
+   cout << c2 << " is made from " << cn << " with a conversion constructor." << endl;
    cout << endl;
 
    double rn = 4.6;

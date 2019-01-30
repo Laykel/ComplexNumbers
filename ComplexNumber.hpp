@@ -5,7 +5,7 @@
  *
  * Simple class to model complex numbers.
  * Added genericity, but no checks to see if the chosen types make sense.
- * The operators can take two complex numbers with different types, once again
+ * The operators can take two complex numbers of different types, once again
  * no checks.
  */
 
@@ -89,8 +89,8 @@ public:
    // Selectors
    T getRealPart() const;
    T getImaginaryPart() const;
-   T getModule() const;
-   T getArgument() const;
+   double getModule() const;
+   double getArgument() const;
    void displayPolarForm() const; // Trigonometric form
 
    // Modifiers

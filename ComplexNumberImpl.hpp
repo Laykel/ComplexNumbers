@@ -117,8 +117,8 @@ ComplexNumber<T>::ComplexNumber(const ComplexNumber<T>& c)
 template <typename T>
 template <typename U>
 ComplexNumber<T>::ComplexNumber(const ComplexNumber<U>& c) {
-   realPart = (U) c.getRealPart();
-   imaginaryPart = (U) c.getImaginaryPart();
+   realPart = (T) c.getRealPart();
+   imaginaryPart = (T) c.getImaginaryPart();
 }
 
 template <typename T>
@@ -132,13 +132,13 @@ T ComplexNumber<T>::getImaginaryPart() const {
 }
 
 template <typename T>
-T ComplexNumber<T>::getModule() const {
+double ComplexNumber<T>::getModule() const {
    return hypot(realPart, imaginaryPart);
 }
 
 template <typename T>
-T ComplexNumber<T>::getArgument() const {
-   T theta = atan2(imaginaryPart, realPart);
+double ComplexNumber<T>::getArgument() const {
+   double theta = atan2(imaginaryPart, realPart);
    
    return (theta >= 0 ? theta : theta + 2*M_PI);
 }
