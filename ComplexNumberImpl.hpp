@@ -79,7 +79,7 @@ ComplexNumber<T> operator* (ComplexNumber<T> lhs, const ComplexNumber<U>& rhs) {
 
 template <typename T, typename U>
 ComplexNumber<T> operator* (ComplexNumber<T> lhs, const U rhs) {
-   return lhs *= rhs;
+   return lhs *= T(rhs);
 }
 
 template <typename T, typename U>
@@ -89,7 +89,7 @@ ComplexNumber<T> operator/ (ComplexNumber<T> lhs, const ComplexNumber<U>& rhs) {
 
 template <typename T, typename U>
 ComplexNumber<T> operator/ (ComplexNumber<T> lhs, const U rhs) {
-   return lhs /= rhs;
+   return lhs /= T(rhs);
 }
 
 // Stream operator
@@ -139,7 +139,7 @@ double ComplexNumber<T>::getModule() const {
 template <typename T>
 double ComplexNumber<T>::getArgument() const {
    double theta = atan2(imaginaryPart, realPart);
-   
+
    return (theta >= 0 ? theta : theta + 2*M_PI);
 }
 
@@ -165,14 +165,14 @@ template <typename T>
 ComplexNumber<T>& ComplexNumber<T>::operator+= (const ComplexNumber<T>& rhs) {
    realPart += rhs.getRealPart();
    imaginaryPart += rhs.getImaginaryPart();
-   
+
    return *this;
 }
 
 template <typename T>
 ComplexNumber<T>& ComplexNumber<T>::operator+= (const T rhs) {
    realPart += rhs;
-   
+
    return *this;
 }
 
@@ -244,7 +244,7 @@ ComplexNumber<T>& ComplexNumber<T>::operator*= (const T rhs) {
 template <typename T>
 ComplexNumber<T>& ComplexNumber<T>::operator/= (const ComplexNumber<T>& rhs) {
    const T r =  realPart * rhs.getRealPart() + imaginaryPart * rhs.getImaginaryPart();
-   const T i = rhs.getModule() * rhs.getModule();
+   const T i = T(rhs.getModule() * rhs.getModule());
 
    imaginaryPart = (imaginaryPart * rhs.getRealPart() - realPart * rhs.getImaginaryPart()) / i;
    realPart = r / i;
